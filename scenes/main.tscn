@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://doscg0l784buy"]
 
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_srqt0"]
+[ext_resource type="PackedScene" uid="uid://c2sjl2lumqg5o" path="res://scenes/jam.tscn" id="3_sdxo6"]
 [ext_resource type="Texture2D" uid="uid://cgcdnlurqo8ge" path="res://Tile.svg" id="3_yahx2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_818o3"]
@@ -101,3 +102,6 @@ drag_horizontal_enabled = true
 tile_set = SubResource("TileSet_dp532")
 format = 2
 layer_0/tile_data = PackedInt32Array(524302, 196609, 3, 327682, 65537, 3, 327683, 131073, 3, 327684, 131073, 3, 327685, 131073, 3, 327686, 196609, 3, 524301, 131073, 3, 524300, 131073, 3, 524299, 131073, 3, 524298, 131073, 3, 524297, 131073, 3, 524296, 131073, 3, 524295, 131073, 3, 524294, 131073, 3, 524293, 65537, 3)
+
+[node name="Jam" parent="." instance=ExtResource("3_sdxo6")]
+position = Vector2(534, 296)
