@@ -20,7 +20,7 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
 [node name="World" type="TileMap" parent="."]
-tile_set = ExtResource("2_wvi7v")
+tile_set = SubResource("TileSet_dp532")
 format = 2
 layer_0/tile_data = PackedInt32Array(524302, 196609, 3, 327682, 65537, 3, 327683, 131073, 3, 327684, 131073, 3, 327685, 131073, 3, 327686, 196609, 3, 524301, 131073, 3, 524300, 131073, 3, 524299, 131073, 3, 524298, 131073, 3, 524297, 131073, 3, 524296, 131073, 3, 524295, 131073, 3, 524294, 131073, 3, 524293, 65537, 3, 458761, 0, 65536)
 
