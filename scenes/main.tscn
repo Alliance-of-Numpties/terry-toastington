@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://doscg0l784buy"]
+[gd_scene load_steps=4 format=3 uid="uid://doscg0l784buy"]
+
+[ext_resource type="Texture2D" uid="uid://cp3w5dqpwwflm" path="res://icon.svg" id="1_g4t5d"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_gv2ha"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68p7x"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(171, 136)
+scale = Vector2(3.07032, 2.31517)
+script = ExtResource("1_gv2ha")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.15625, 0.234375)
+texture = ExtResource("1_g4t5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_68p7x")
