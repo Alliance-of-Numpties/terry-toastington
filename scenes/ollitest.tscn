@@ -2,20 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://yamxyc1blu1w" path="res://scenes/player.tscn" id="1_7wpi4"]
 [ext_resource type="Texture2D" uid="uid://cp3w5dqpwwflm" path="res://icon.svg" id="2_scagv"]
-[ext_resource type="Script" path="res://scripts/PlayerPath.gd" id="3_qpq4h"]
-[ext_resource type="PackedScene" uid="uid://capfidy20shne" path="res://scenes/ghoast.tscn" id="4_bycpi"]
+[ext_resource type="PackedScene" uid="uid://dppks3v5rdp7x" path="res://scenes/player_path_tracker.tscn" id="3_k60th"]
+[ext_resource type="Script" path="res://scripts/OlliTestGameManager.gd" id="4_uu1x4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n3k7w"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_7wpi4")]
-position = Vector2(170, 137)
-speed = 500.0
-jump_velocity = -900.0
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 411)
+position = Vector2(0, 939)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(0, 65)
@@ -25,7 +20,11 @@ texture = ExtResource("2_scagv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_n3k7w")
 
-[node name="PlayerPath" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("3_qpq4h")
-player = NodePath("../Player")
-ghoast_scene = ExtResource("4_bycpi")
+[node name="OlliTestGameManager" type="Node" parent="." node_paths=PackedStringArray("spawn_marker")]
+script = ExtResource("4_uu1x4")
+spawn_marker = NodePath("../PlayerSpawnMarker")
+player_scene = ExtResource("1_7wpi4")
+player_path_scene = ExtResource("3_k60th")
+
+[node name="PlayerSpawnMarker" type="Node2D" parent="."]
+position = Vector2(820, 31)

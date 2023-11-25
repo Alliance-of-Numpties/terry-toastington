@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dppks3v5rdp7x"]
+
+[ext_resource type="Script" path="res://scripts/PlayerPath.gd" id="1_yj0y7"]
+[ext_resource type="PackedScene" uid="uid://capfidy20shne" path="res://scenes/ghoast.tscn" id="2_uer45"]
+
+[node name="PlayerPath" type="Node2D"]
+script = ExtResource("1_yj0y7")
+ghoast_scene = ExtResource("2_uer45")
