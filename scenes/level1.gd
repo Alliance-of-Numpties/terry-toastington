@@ -5,7 +5,7 @@ extends Node2D
 
 func _on_player_spawner_spawned_player():
 	var player = get_tree().get_first_node_in_group("Player")
-	player.death.connect(_on_player_death)
+	player.death_end.connect(_on_player_death)
 
 
 func _on_player_death():

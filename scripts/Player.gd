@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
-signal death
+signal death_start
+signal death_end
 signal got_jam
 
 @export var speed = 500.0
@@ -16,6 +17,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_tree = $AnimationTree
 @onready var model = $Model
 
+var dead = false
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -28,23 +31,26 @@ func _physics_process(delta):
 			# otherwise use the wall slide gravity modifier.
 			velocity.y = min(velocity.y, wall_slide_speed_limit)
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			velocity.y = jump_velocity
-		elif is_on_wall():
-			velocity.y = jump_velocity
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * speed
-		animation_tree.get("parameters/playback").travel("walk")
-		model.scale.x = -sign(direction) * abs(model.scale.x)
+	if dead:
+		velocity.x = 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		animation_tree.get("parameters/playback").travel("idle")
+		# Handle Jump.
+		if Input.is_action_just_pressed("jump"):
+			if is_on_floor():
+				velocity.y = jump_velocity
+			elif is_on_wall():
+				velocity.y = jump_velocity
+
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction = Input.get_axis("left", "right")
+		if direction:
+			velocity.x = direction * speed
+			animation_tree.get("parameters/playback").travel("walk")
+			model.scale.x = -sign(direction) * abs(model.scale.x)
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			animation_tree.get("parameters/playback").travel("idle")
 
 	move_and_slide()
 
@@ -62,4 +68,10 @@ func reached_finish_line():
 
 func kill():
 	print("OW")
-	death.emit()
+	animation_tree.get("parameters/playback").travel("death")
+	death_start.emit()
+	dead = true
+
+func death_anim_done():
+	print("DEAD")
+	death_end.emit()
