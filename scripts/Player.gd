@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
-@export var speed = 300.0
-@export var jump_velocity = -400.0
+class_name Player
+
+signal death
+
+@export var speed = 500.0
+@export var jump_velocity = -900.0
 @export var jam_points = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -32,3 +36,7 @@ func collided_with_jam(jam):
 	jam_points += 1
 	print(str(self) + " jam points: " + str(jam_points))
 	jam.queue_free()
+
+func kill():
+	print("OW")
+	death.emit()

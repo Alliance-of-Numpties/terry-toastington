@@ -1,32 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://6d7qspc6qjwp"]
+[gd_scene load_steps=6 format=3 uid="uid://6d7qspc6qjwp"]
 
 [ext_resource type="PackedScene" uid="uid://yamxyc1blu1w" path="res://scenes/player.tscn" id="1_7wpi4"]
 [ext_resource type="Texture2D" uid="uid://cp3w5dqpwwflm" path="res://icon.svg" id="2_scagv"]
 [ext_resource type="Script" path="res://scripts/PlayerPath.gd" id="3_qpq4h"]
-[ext_resource type="Script" path="res://scripts/PlayerPathFollow.gd" id="4_0g51v"]
-[ext_resource type="Texture2D" uid="uid://cllfvx6l4m6v4" path="res://toast.jpeg" id="4_6ktn3"]
+[ext_resource type="PackedScene" uid="uid://capfidy20shne" path="res://scenes/ghoast.tscn" id="4_bycpi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n3k7w"]
-
-[sub_resource type="Curve2D" id="Curve2D_7wl46"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 2.08165e-12, 2.08165e-12, 100, 2.08165e-12, 100, 2.08165e-12, 0, 0, 0, 0, 100, 100)
-}
-point_count = 3
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_7wpi4")]
 position = Vector2(170, 137)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../Camera2D")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(170, 137)
-process_callback = 0
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
+speed = 500.0
+jump_velocity = -900.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 411)
@@ -39,14 +25,7 @@ texture = ExtResource("2_scagv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_n3k7w")
 
-[node name="PlayerPath" type="Path2D" parent="." node_paths=PackedStringArray("player")]
-curve = SubResource("Curve2D_7wl46")
+[node name="PlayerPath" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_qpq4h")
 player = NodePath("../Player")
-
-[node name="PlayerPathFollow" type="PathFollow2D" parent="PlayerPath"]
-script = ExtResource("4_0g51v")
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerPath/PlayerPathFollow"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_6ktn3")
+ghoast_scene = ExtResource("4_bycpi")

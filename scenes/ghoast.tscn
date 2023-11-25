@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://capfidy20shne"]
+
+[ext_resource type="Script" path="res://scripts/PlayerPathFollow.gd" id="1_era5s"]
+[ext_resource type="Script" path="res://scripts/Ghoast.gd" id="2_vpscq"]
+[ext_resource type="Texture2D" uid="uid://cllfvx6l4m6v4" path="res://toast.jpeg" id="3_eh1b6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwjf7"]
+radius = 45.0
+height = 132.0
+
+[node name="PlayerPathFollow" type="Node2D"]
+script = ExtResource("1_era5s")
+
+[node name="Ghoast" type="Area2D" parent="."]
+script = ExtResource("2_vpscq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ghoast"]
+self_modulate = Color(0.584314, 0.584314, 0.584314, 0.596078)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_eh1b6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ghoast"]
+shape = SubResource("CapsuleShape2D_jwjf7")
+
+[connection signal="body_entered" from="Ghoast" to="Ghoast" method="_on_body_entered"]
