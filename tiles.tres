@@ -149,5 +149,5 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 2
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.678431, 0.0235294, 0.454902, 1)
-sources/1 = SubResource("TileSetAtlasSource_818o3")
 sources/0 = SubResource("TileSetScenesCollectionSource_tex5w")
+sources/1 = SubResource("TileSetAtlasSource_818o3")
