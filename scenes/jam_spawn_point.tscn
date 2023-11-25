@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bs38s85nngg6d"]
+[gd_scene load_steps=2 format=3 uid="uid://bs38s85nngg6d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrpaw"]
 
 [node name="Jam Spawn Point" type="Node2D" groups=["Jam Spawn Points"]]
+
+[node name="DebugVisible" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rrpaw")
+debug_color = Color(0.788235, 0.384314, 0.517647, 0.419608)

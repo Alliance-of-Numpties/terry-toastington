@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://doscg0l784buy"]
+[gd_scene load_steps=9 format=3 uid="uid://doscg0l784buy"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_eweg8"]
-[ext_resource type="PackedScene" uid="uid://drl07qwrgk6kx" path="res://scenes/level1.tscn" id="2_a0qif"]
+[ext_resource type="PackedScene" uid="uid://c6uogb11xh1xj" path="res://scenes/levels/level2.tscn" id="2_111tr"]
+[ext_resource type="PackedScene" uid="uid://dndy5ks8eewxa" path="res://scenes/levels/level1.tscn" id="2_pbo6t"]
 [ext_resource type="PackedScene" uid="uid://y4myx5d48fjb" path="res://music.tscn" id="2_vim5l"]
 [ext_resource type="PackedScene" uid="uid://djqwrq68u16oe" path="res://scenes/home_menu.tscn" id="3_c6lai"]
+[ext_resource type="PackedScene" uid="uid://c23kapshohonk" path="res://scenes/levels/level3.tscn" id="4_7t6vw"]
+[ext_resource type="PackedScene" uid="uid://45l8haq63h48" path="res://scenes/game_complete.tscn" id="4_n0ksl"]
 [ext_resource type="PackedScene" uid="uid://bskr03k7bgleo" path="res://scenes/pause_menu.tscn" id="5_w54vl"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_eweg8")
-scenes = Array[PackedScene]([ExtResource("2_a0qif")])
+scenes = Array[PackedScene]([ExtResource("2_pbo6t"), ExtResource("2_111tr"), ExtResource("4_7t6vw")])
 home_menu_scene = ExtResource("3_c6lai")
+game_complete_scene = ExtResource("4_n0ksl")
 
 [node name="Music" parent="." instance=ExtResource("2_vim5l")]
 

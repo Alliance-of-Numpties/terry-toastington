@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://drl07qwrgk6kx"]
 
-[ext_resource type="Script" path="res://scenes/level1.gd" id="1_5kmul"]
 [ext_resource type="Script" path="res://scripts/spawn_jam.gd" id="1_7b17x"]
 [ext_resource type="TileSet" uid="uid://s6jr1v8akh6q" path="res://tiles.tres" id="1_43yrp"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_pmclq"]
 [ext_resource type="PackedScene" uid="uid://cja7vvilisuoi" path="res://scenes/player_spawner.tscn" id="3_abosn"]
 [ext_resource type="Texture2D" uid="uid://dmyojgbqeo1sb" path="res://progress-bar/under.svg" id="4_petha"]
 [ext_resource type="Script" path="res://scripts/UI.gd" id="4_rnuko"]
@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://i08o0n0rqatx" path="res://progress-bar/progress.svg" id="6_25mwa"]
 
 [node name="Level 1" type="Node2D" groups=["Level"]]
-script = ExtResource("1_5kmul")
-target_jam_points = 5
+script = ExtResource("1_pmclq")
 
 [node name="PlayerSpawner" parent="." node_paths=PackedStringArray("spawn_marker") instance=ExtResource("3_abosn")]
 spawn_marker = NodePath("../PlayerSpawnMarker")
@@ -49,4 +48,3 @@ texture_progress_offset = Vector2(2.08165e-12, 2.08165e-12)
 [connection signal="spawned_player" from="PlayerSpawner" to="." method="_on_player_spawner_spawned_player"]
 [connection signal="spawned_player" from="PlayerSpawner" to="Jam Spawner" method="_on_player_spawner_spawned_player"]
 [connection signal="spawned_player" from="PlayerSpawner" to="UI" method="_on_player_spawner_spawned_player"]
-[connection signal="body_entered" from="World/Item" to="World/Item" method="_on_body_entered" flags=18]
