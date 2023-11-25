@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://doscg0l784buy"]
+[gd_scene load_steps=3 format=3 uid="uid://doscg0l784buy"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_eweg8"]
+[ext_resource type="PackedScene" path="res://music.tscn" id="2_vim5l"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_eweg8")
+
+[node name="Music" parent="." instance=ExtResource("2_vim5l")]

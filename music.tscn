@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://y4myx5d48fjb"]
+
+[ext_resource type="AudioStream" uid="uid://ble4wjpv67tcb" path="res://sounds/712157__strangehorizon__sonic-kitchen-nerd-jams.mp3" id="1_402vv"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_402vv")
+autoplay = true
