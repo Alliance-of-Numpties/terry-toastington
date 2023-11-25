@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://capfidy20shne"]
+[gd_scene load_steps=7 format=3 uid="uid://capfidy20shne"]
 
 [ext_resource type="Script" path="res://scripts/PlayerPathFollow.gd" id="1_era5s"]
 [ext_resource type="Script" path="res://scripts/Ghoast.gd" id="2_vpscq"]
-[ext_resource type="Texture2D" uid="uid://uyrmv6dw0s41" path="res://toast.png" id="3_laq07"]
+[ext_resource type="Texture2D" uid="uid://e8cskehwuib0" path="res://toast_parts/toast/Body.PNG" id="3_kpqf8"]
+[ext_resource type="Texture2D" uid="uid://csoik5unhon24" path="res://toast_parts/toast/GhoastTrail.PNG" id="4_m3j7g"]
+[ext_resource type="Texture2D" uid="uid://bqi5gpcbwqb7u" path="res://toast_parts/toast/GhoastEffect.PNG" id="5_c582s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwjf7"]
-radius = 45.0
-height = 132.0
+radius = 28.0
+height = 78.0
 
 [node name="PlayerPathFollow" type="Node2D"]
 script = ExtResource("1_era5s")
@@ -14,10 +16,18 @@ script = ExtResource("1_era5s")
 [node name="Ghoast" type="Area2D" parent="."]
 script = ExtResource("2_vpscq")
 
-[node name="Sprite2D" type="Sprite2D" parent="Ghoast"]
-self_modulate = Color(0.584314, 0.584314, 0.584314, 0.596078)
+[node name="Model" type="Node2D" parent="Ghoast"]
+modulate = Color(0.670588, 0.670588, 0.670588, 0.545098)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_laq07")
+
+[node name="GhoastEffect" type="Sprite2D" parent="Ghoast/Model"]
+texture = ExtResource("5_c582s")
+
+[node name="GhoastTrail" type="Sprite2D" parent="Ghoast/Model"]
+texture = ExtResource("4_m3j7g")
+
+[node name="Body" type="Sprite2D" parent="Ghoast/Model"]
+texture = ExtResource("3_kpqf8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ghoast"]
 shape = SubResource("CapsuleShape2D_jwjf7")
