@@ -16,7 +16,7 @@ func spawn_jam():
 		target_spawn = choose_random(spawn_points)
 
 	var jam_instance = jam_scene.instantiate()
-	add_child(jam_instance)
+	add_sibling(jam_instance)
 	jam_instance.global_position = target_spawn.global_position
 
 

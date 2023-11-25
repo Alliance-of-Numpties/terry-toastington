@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 500 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-12,-339)">
+        <g transform="matrix(0.521376,0,0,0.510204,4.70073,300.224)">
+            <path d="M973,125C973,97.956 951.514,76 925.05,76L61.95,76C35.486,76 14,97.956 14,125C14,152.044 35.486,174 61.95,174L925.05,174C951.514,174 973,152.044 973,125Z" style="fill:url(#_Linear1);"/>
+            <clipPath id="_clip2">
+                <path d="M973,125C973,97.956 951.514,76 925.05,76L61.95,76C35.486,76 14,97.956 14,125C14,152.044 35.486,174 61.95,174L925.05,174C951.514,174 973,152.044 973,125Z"/>
+            </clipPath>
+            <g clip-path="url(#_clip2)">
+                <g transform="matrix(0.959,0,0,0.98,2.492,-103.34)">
+                    <path d="M951,195L951,213L966,213C976.947,213 986.873,217.407 994.099,224.542C996.796,227.206 1000.12,225.779 998.897,222.178C993.548,206.382 978.593,195 961,195L951,195Z" style="fill:rgb(138,255,234);"/>
+                </g>
+                <g transform="matrix(0.978,0,0,0.8,10.857,26.96)">
+                    <rect x="56.165" y="76" width="867.807" height="22.05" style="fill:rgb(138,255,234);"/>
+                </g>
+                <g transform="matrix(0.959,0,0,0.98,2.492,-103.34)">
+                    <path d="M66,213L55,213C45.36,213 36.513,216.417 29.603,222.105C27.376,223.939 25.067,221.88 26.362,218.935C32.554,204.848 46.636,195 63,195L66,195L66,213Z" style="fill:rgb(138,255,234);"/>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(4.99135e-15,83.3,-81.515,5.10065e-15,494.459,82.86)"><stop offset="0" style="stop-color:rgb(92,227,237);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(0,154,158);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>
