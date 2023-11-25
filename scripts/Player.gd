@@ -5,6 +5,7 @@ class_name Player
 signal death_start
 signal death_end
 signal got_jam
+signal completed_level
 
 @export var speed = 500.0
 @export var jump_velocity = -900.0
@@ -22,8 +23,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var dead = false
 
+
 func _ready():
 	animation_tree.active = true
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -76,6 +79,11 @@ func collided_with_jam(jam):
 	got_jam.emit()
 
 
+func collided_with_plate(plate):
+	if jam_points == get_tree().get_first_node_in_group("Level").target_jam_points:
+		completed_level.emit()
+
+
 func pickup_gun(new_gun: PackedScene):
 	if gun != null:
 		gun.queue_free()
@@ -86,10 +94,12 @@ func pickup_gun(new_gun: PackedScene):
 	hand.remote_path = hand.get_path_to(gun)
 	gun.empty_clip.connect(drop_gun)
 
+
 func drop_gun():
 	gun.queue_free()
 	gun = null
 	hand.remote_path = NodePath("")
+
 
 func reached_finish_line():
 	get_tree().change_scene_to_file("res://scenes/home_menu.tscn")
@@ -100,6 +110,7 @@ func kill():
 	animation_tree.get("parameters/playback").travel("death")
 	death_start.emit()
 	dead = true
+
 
 func death_anim_done():
 	print("DEAD")

@@ -489,6 +489,7 @@ scale = Vector2(0.1, 0.1)
 position = Vector2(-100, 220)
 
 [node name="BackLeg" type="Sprite2D" parent="Model/Legs/BackHip"]
+z_index = 100
 position = Vector2(80, -220)
 texture = ExtResource("2_enaa8")
 
@@ -496,6 +497,7 @@ texture = ExtResource("2_enaa8")
 position = Vector2(120, 220)
 
 [node name="FrontLeg" type="Sprite2D" parent="Model/Legs/FrontHip"]
+z_index = 100
 position = Vector2(94.219, -220.732)
 texture = ExtResource("3_whvu1")
 flip_h = true
@@ -507,10 +509,12 @@ position = Vector2(2.08165e-12, 0)
 position = Vector2(-220, -10)
 
 [node name="BackArm" type="Sprite2D" parent="Model/UpperBody/BackShoulder"]
+z_index = 100
 position = Vector2(220, 10)
 texture = ExtResource("4_npynr")
 
 [node name="Body" type="Sprite2D" parent="Model/UpperBody"]
+z_index = 100
 position = Vector2(0, -4.76837e-07)
 texture = ExtResource("2_21i3r")
 
@@ -518,6 +522,7 @@ texture = ExtResource("2_21i3r")
 position = Vector2(240, -10)
 
 [node name="FrontArm" type="Sprite2D" parent="Model/UpperBody/FrontShoulder"]
+z_index = 100
 position = Vector2(-240, 10)
 texture = ExtResource("3_cl512")
 

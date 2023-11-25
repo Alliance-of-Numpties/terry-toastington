@@ -23,12 +23,15 @@ modulate = Color(0.670588, 0.670588, 0.670588, 0.545098)
 scale = Vector2(0.1, 0.1)
 
 [node name="GhoastEffect" type="Sprite2D" parent="Ghoast/Model"]
+z_index = 90
 texture = ExtResource("5_c582s")
 
 [node name="GhoastTrail" type="Sprite2D" parent="Ghoast/Model"]
+z_index = 90
 texture = ExtResource("4_m3j7g")
 
 [node name="Body" type="Sprite2D" parent="Ghoast/Model"]
+z_index = 90
 texture = ExtResource("3_kpqf8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ghoast"]
