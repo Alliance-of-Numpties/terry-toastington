@@ -17,6 +17,7 @@ func _ready():
 
 func start_level():
 	current_level_node = scenes[current_scene_index].instantiate() as Level
+	current_level_node.all_jam_collected.connect(_on_all_jam_collected)
 	current_level_node.level_complete.connect(_on_level_complete)
 	current_level_node.restart_level.connect(_on_level_restart)
 	add_child(current_level_node)
@@ -67,3 +68,6 @@ func _on_level_restart():
 
 func _on_end():
 	reload_current_scene()
+
+func _on_all_jam_collected():
+	animation_player.play("JamCollected")
