@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://6d7qspc6qjwp"]
 
 [ext_resource type="PackedScene" uid="uid://cja7vvilisuoi" path="res://scenes/player_spawner.tscn" id="2_4hhmc"]
-[ext_resource type="PackedScene" path="res://music.tscn" id="3_kigmp"]
+[ext_resource type="PackedScene" uid="uid://y4myx5d48fjb" path="res://music.tscn" id="3_kigmp"]
 [ext_resource type="TileSet" uid="uid://s6jr1v8akh6q" path="res://tiles.tres" id="4_iqp02"]
 
 [node name="Node2D" type="Node2D"]
@@ -19,6 +19,6 @@ layer_0/tile_data = PackedInt32Array(48, 196609, 1, -65488, 196609, 0, 47, 13107
 
 [node name="Music" parent="." instance=ExtResource("3_kigmp")]
 
-[connection signal="body_entered" from="World/@Area2D@28634" to="World/@Area2D@28634" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="World/@Area2D@28636" to="World/@Area2D@28636" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="World/@Area2D@28637" to="World/@Area2D@28637" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="World/@Area2D@18286" to="World/@Area2D@18286" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="World/@Area2D@18288" to="World/@Area2D@18288" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="World/@Area2D@18289" to="World/@Area2D@18289" method="_on_body_entered" flags=18]

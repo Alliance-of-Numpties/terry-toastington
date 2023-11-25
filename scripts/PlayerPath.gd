@@ -16,11 +16,9 @@ class TimedPoint:
 		x_scale = _x_scale
 
 class Recording:
-	var start_time: float
 	var points: Array[TimedPoint]
 
-	func _init(_start_time: float, _points: Array[TimedPoint]):
-		start_time = _start_time
+	func _init(_points: Array[TimedPoint]):
 		points = _points
 
 	func get_point_for_time(time: float) -> TimedPoint:
@@ -41,7 +39,7 @@ class Recording:
 		var time_progress = (time - prev_point.time) / time_delta
 		return TimedPoint.new(time, prev_point.position.lerp(next_point.position, time_progress), prev_point.x_scale)
 
-@onready var recording: Recording = Recording.new(Time.get_ticks_msec(), [TimedPoint.new(0.0, player.position, player.model.scale.x)])
+@onready var recording: Recording = Recording.new([TimedPoint.new(0.0, player.position, player.model.scale.x)])
 var timer: Timer
 @export var spawn_time: float = 3.0
 
@@ -53,14 +51,14 @@ func _ready():
 	timer.timeout.connect(_on_timeout)
 	timer.start(spawn_time)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if recording != null:
-		var new_point = TimedPoint.new(Time.get_ticks_msec() - recording.start_time, player.position, player.model.scale.x)
+		var prev_point = recording.points[-1]
+		var new_point = TimedPoint.new(delta * 1000 + prev_point.time, player.position, player.model.scale.x)
 		recording.points.append(new_point)
 
 func spawn_child():
 	var child = ghoast_scene.instantiate() as PlayerPathFollow
-	child.start_time = Time.get_ticks_msec()
 	child.recording = recording
 	add_child(child)
 	audio_stream_player.play()
