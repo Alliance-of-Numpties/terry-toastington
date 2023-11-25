@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 signal death
+signal got_jam
 
 @export var speed = 500.0
 @export var jump_velocity = -900.0
@@ -52,6 +53,7 @@ func collided_with_jam(jam):
 	jam_points += 1
 	print(str(self) + " jam points: " + str(jam_points))
 	jam.queue_free()
+	got_jam.emit()
 
 
 func reached_finish_line():
