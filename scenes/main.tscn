@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://doscg0l784buy"]
+[gd_scene load_steps=6 format=3 uid="uid://doscg0l784buy"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_eweg8"]
 [ext_resource type="PackedScene" uid="uid://drl07qwrgk6kx" path="res://scenes/level1.tscn" id="2_a0qif"]
 [ext_resource type="PackedScene" uid="uid://y4myx5d48fjb" path="res://music.tscn" id="2_vim5l"]
 [ext_resource type="PackedScene" uid="uid://djqwrq68u16oe" path="res://scenes/home_menu.tscn" id="3_c6lai"]
+[ext_resource type="PackedScene" uid="uid://bskr03k7bgleo" path="res://scenes/pause_menu.tscn" id="5_w54vl"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_eweg8")
@@ -12,57 +13,8 @@ home_menu_scene = ExtResource("3_c6lai")
 
 [node name="Music" parent="." instance=ExtResource("2_vim5l")]
 
-[node name="PauseMenu" type="Control" parent="."]
-process_mode = 2
+[node name="PauseMenu" parent="." instance=ExtResource("5_w54vl")]
 visible = false
-z_index = 200
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 550
-theme_override_constants/margin_top = 250
-theme_override_constants/margin_right = 550
-theme_override_constants/margin_bottom = 250
-
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/MarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/MarginContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="Label" type="Label" parent="PauseMenu/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "Paused"
-horizontal_alignment = 1
-
-[node name="Resume" type="Button" parent="PauseMenu/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Resume"
-
-[node name="Exit To Menu" type="Button" parent="PauseMenu/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Exit to Menu
-"
-
-[connection signal="pressed" from="PauseMenu/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="resume_game"]
-[connection signal="pressed" from="PauseMenu/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Exit To Menu" to="." method="exit_to_menu"]
+[connection signal="quit" from="PauseMenu" to="." method="exit_to_menu"]
+[connection signal="resume" from="PauseMenu" to="." method="resume_game"]
