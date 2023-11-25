@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cncrovwakjogf"]
+
+[ext_resource type="Script" path="res://scripts/spawn_jam.gd" id="1_t4dqc"]
+[ext_resource type="PackedScene" uid="uid://c2sjl2lumqg5o" path="res://scenes/jam.tscn" id="2_7npw6"]
+[ext_resource type="PackedScene" uid="uid://ddvuf5xllswfw" path="res://scenes/jam_spawn_effect.tscn" id="3_6jrdd"]
+
+[node name="Jam Spawner" type="Node2D"]
+script = ExtResource("1_t4dqc")
+jam_scene = ExtResource("2_7npw6")
+effect_scene = ExtResource("3_6jrdd")

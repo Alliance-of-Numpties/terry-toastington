@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_5oi5p"]
 [ext_resource type="PackedScene" uid="uid://cja7vvilisuoi" path="res://scenes/player_spawner.tscn" id="2_4o7rl"]
-[ext_resource type="Script" path="res://scripts/spawn_jam.gd" id="3_m6ya1"]
+[ext_resource type="PackedScene" uid="uid://cncrovwakjogf" path="res://scenes/jam_spawner.tscn" id="3_eisal"]
 [ext_resource type="TileSet" uid="uid://s6jr1v8akh6q" path="res://tiles.tres" id="4_cj6kb"]
 [ext_resource type="Script" path="res://scripts/UI.gd" id="5_85ltv"]
 [ext_resource type="Texture2D" uid="uid://dmyojgbqeo1sb" path="res://progress-bar/under.svg" id="6_fnd5j"]
@@ -18,8 +18,7 @@ spawn_marker = NodePath("../PlayerSpawnMarker")
 [node name="PlayerSpawnMarker" type="Node2D" parent="."]
 position = Vector2(960, 420)
 
-[node name="Jam Spawner" type="Node2D" parent="."]
-script = ExtResource("3_m6ya1")
+[node name="Jam Spawner" parent="." instance=ExtResource("3_eisal")]
 
 [node name="World" type="TileMap" parent="."]
 tile_set = ExtResource("4_cj6kb")
