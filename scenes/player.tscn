@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://yamxyc1blu1w"]
+[gd_scene load_steps=23 format=3 uid="uid://yamxyc1blu1w"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_ffm6m"]
 [ext_resource type="Texture2D" uid="uid://e8cskehwuib0" path="res://toast_parts/toast/Body.PNG" id="2_21i3r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dogdnbtljobpk" path="res://toast_parts/toast/FrontArm.PNG" id="3_cl512"]
 [ext_resource type="Texture2D" uid="uid://dsp16fvmkhxt8" path="res://toast_parts/toast/FrontLeg.PNG" id="3_whvu1"]
 [ext_resource type="Texture2D" uid="uid://dd6abg8m17bw5" path="res://toast_parts/toast/BackArm.PNG" id="4_npynr"]
+[ext_resource type="AudioStream" uid="uid://clmt31ab75v3" path="res://sounds/362335__balloonhead__ow.wav" id="7_j3krs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68p7x"]
 radius = 29.0
@@ -306,6 +307,21 @@ tracks/10/keys = {
 "method": &"death_anim_done"
 }]
 }
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AudioStreamPlayer2D")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_j3krs")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/11/use_blend = true
 
 [sub_resource type="Animation" id="Animation_3dvwd"]
 resource_name = "idle"
@@ -457,12 +473,11 @@ states/walk/node = SubResource("AnimationNodeAnimation_fem5j")
 states/walk/position = Vector2(586.286, 121.918)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_684bv"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6ng76"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_n8r80"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_n6e8h"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_aiqkg")]
 
-[node name="Player" type="CharacterBody2D" groups=["Player"] node_paths=PackedStringArray("hand", "gun")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hand") groups=["Player"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ffm6m")
 hand = NodePath("Model/UpperBody/FrontShoulder/Hand")
-gun = NodePath("")
 
 [node name="Model" type="Node2D" parent="."]
 texture_filter = 2
@@ -508,7 +523,6 @@ texture = ExtResource("3_cl512")
 
 [node name="Hand" type="RemoteTransform2D" parent="Model/UpperBody/FrontShoulder"]
 position = Vector2(10, 190)
-scale = Vector2(1, 1)
 update_scale = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -523,3 +537,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_djqyh")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_j3krs")

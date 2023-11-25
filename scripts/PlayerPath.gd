@@ -45,6 +45,8 @@ class Recording:
 var timer: Timer
 @export var spawn_time: float = 3.0
 
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 func _ready():
 	timer = Timer.new()
 	add_child(timer)
@@ -61,6 +63,7 @@ func spawn_child():
 	child.start_time = Time.get_ticks_msec()
 	child.recording = recording
 	add_child(child)
+	audio_stream_player.play()
 
 func _on_timeout():
 	spawn_child()

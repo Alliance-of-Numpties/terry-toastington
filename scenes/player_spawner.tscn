@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/PlayerSpawner.gd" id="1_0q5bg"]
 [ext_resource type="PackedScene" uid="uid://yamxyc1blu1w" path="res://scenes/player.tscn" id="2_i63mu"]
-[ext_resource type="PackedScene" path="res://scenes/player_path_tracker.tscn" id="3_eyuoe"]
+[ext_resource type="PackedScene" uid="uid://dppks3v5rdp7x" path="res://scenes/player_path_tracker.tscn" id="3_eyuoe"]
 
 [node name="PlayerSpawner" type="Node"]
 script = ExtResource("1_0q5bg")
