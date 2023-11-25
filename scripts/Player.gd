@@ -8,7 +8,7 @@ signal got_jam
 signal completed_level
 
 @export var speed = 500.0
-@export var jump_velocity = -900.0
+@export var jump_velocity = -1000.0
 @export var jam_points = 0
 @export var wall_slide_speed_limit = 100
 
@@ -32,7 +32,11 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		if not is_on_wall():
-			velocity.y += gravity * delta
+			var falling = velocity.y > 0
+			var falling_multiplier = 0.8
+			var rising_multiplier = 1.2
+			var gravity_multiplier = falling_multiplier if falling else rising_multiplier
+			velocity.y += gravity * delta * gravity_multiplier
 		else:
 			velocity.y += gravity * delta
 			# Continue jumping with regular gravity if still moving up,
