@@ -11,7 +11,8 @@ signal got_jam
 @export var jam_points = 0
 @export var wall_slide_speed_limit = 100
 
-@export var gun: Gun
+@export var hand: RemoteTransform2D
+@export var gun: Gun = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -63,7 +64,7 @@ func _input(event):
 	if dead:
 		return
 
-	if event.is_action_pressed("shoot"):
+	if event.is_action_pressed("shoot") and gun != null:
 		print("FIRE")
 		gun.fire((get_global_mouse_position() - gun.global_position).normalized())
 
@@ -74,6 +75,21 @@ func collided_with_jam(jam):
 	jam.queue_free()
 	got_jam.emit()
 
+
+func pickup_gun(new_gun: PackedScene):
+	if gun != null:
+		gun.queue_free()
+	gun = new_gun.instantiate()
+	gun.position = Vector2.ZERO
+	gun.rotation = 0
+	add_child(gun)
+	hand.remote_path = hand.get_path_to(gun)
+	gun.empty_clip.connect(drop_gun)
+
+func drop_gun():
+	gun.queue_free()
+	gun = null
+	hand.remote_path = NodePath("")
 
 func reached_finish_line():
 	get_tree().change_scene_to_file("res://scenes/home_menu.tscn")

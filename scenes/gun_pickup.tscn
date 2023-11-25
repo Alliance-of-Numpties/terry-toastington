@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c66ci8gwakmhr"]
+
+[ext_resource type="Script" path="res://scripts/gun_pickup.gd" id="1_5knna"]
+[ext_resource type="Texture2D" uid="uid://cnuy6bplblaiq" path="res://jam.png" id="2_euwrs"]
+[ext_resource type="PackedScene" uid="uid://dyx777ktp3v2" path="res://scenes/gun.tscn" id="2_xu5bt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2njnp"]
+
+[node name="Item" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_5knna")
+gun_scene = ExtResource("2_xu5bt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2njnp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0431373, 0.4, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_euwrs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

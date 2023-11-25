@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://yamxyc1blu1w"]
+[gd_scene load_steps=22 format=3 uid="uid://yamxyc1blu1w"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_ffm6m"]
 [ext_resource type="Texture2D" uid="uid://e8cskehwuib0" path="res://toast_parts/toast/Body.PNG" id="2_21i3r"]
@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dogdnbtljobpk" path="res://toast_parts/toast/FrontArm.PNG" id="3_cl512"]
 [ext_resource type="Texture2D" uid="uid://dsp16fvmkhxt8" path="res://toast_parts/toast/FrontLeg.PNG" id="3_whvu1"]
 [ext_resource type="Texture2D" uid="uid://dd6abg8m17bw5" path="res://toast_parts/toast/BackArm.PNG" id="4_npynr"]
-[ext_resource type="Script" path="res://scripts/Gun.gd" id="7_dfc2b"]
-[ext_resource type="Texture2D" uid="uid://cnuy6bplblaiq" path="res://jam.png" id="7_nirrn"]
-[ext_resource type="PackedScene" uid="uid://cjbtgv01laktd" path="res://scenes/bullet.tscn" id="8_ph7ru"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68p7x"]
 radius = 29.0
@@ -460,11 +457,12 @@ states/walk/node = SubResource("AnimationNodeAnimation_fem5j")
 states/walk/position = Vector2(586.286, 121.918)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_684bv"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6ng76"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_n8r80"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_n6e8h"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_aiqkg")]
 
-[node name="Player" type="CharacterBody2D" groups=["Player"] node_paths=PackedStringArray("gun")]
+[node name="Player" type="CharacterBody2D" groups=["Player"] node_paths=PackedStringArray("hand", "gun")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ffm6m")
-gun = NodePath("Model/UpperBody/FrontShoulder/Gun")
+hand = NodePath("Model/UpperBody/FrontShoulder/Hand")
+gun = NodePath("")
 
 [node name="Model" type="Node2D" parent="."]
 texture_filter = 2
@@ -508,17 +506,10 @@ position = Vector2(240, -10)
 position = Vector2(-240, 10)
 texture = ExtResource("3_cl512")
 
-[node name="Gun" type="Node2D" parent="Model/UpperBody/FrontShoulder" node_paths=PackedStringArray("player")]
+[node name="Hand" type="RemoteTransform2D" parent="Model/UpperBody/FrontShoulder"]
 position = Vector2(10, 190)
-rotation = 0.0123025
-scale = Vector2(10, 10)
-script = ExtResource("7_dfc2b")
-player = NodePath("../../../..")
-bullet_scene = ExtResource("8_ph7ru")
-
-[node name="Sprite2D" type="Sprite2D" parent="Model/UpperBody/FrontShoulder/Gun"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_nirrn")
+scale = Vector2(1, 1)
+update_scale = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_68p7x")
