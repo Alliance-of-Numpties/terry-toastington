@@ -47,6 +47,11 @@ func collided_with_jam(jam):
 	print(str(self) + " jam points: " + str(jam_points))
 	jam.queue_free()
 
+
+func reached_finish_line():
+	get_tree().change_scene_to_file("res://scenes/home_menu.tscn")
+
+
 func kill():
 	print("OW")
 	death.emit()
