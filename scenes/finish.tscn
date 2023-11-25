@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://0yltpsdcs2dg"]
+[gd_scene load_steps=4 format=3 uid="uid://bf0aobie6ooha"]
 
 [ext_resource type="Texture2D" uid="uid://cgcdnlurqo8ge" path="res://Tile.svg" id="1_14lc3"]
+[ext_resource type="Script" path="res://scenes/finish.gd" id="1_yodcp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brryq"]
 
 [node name="Finish" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_yodcp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_14lc3")
@@ -10,3 +16,6 @@ region_enabled = true
 region_rect = Rect2(259, 5, 30, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_brryq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
