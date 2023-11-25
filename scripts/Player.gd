@@ -22,6 +22,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var model = $Model
 
 var dead = false
+var in_victory_anim = false
 
 
 func _ready():
@@ -43,7 +44,7 @@ func _physics_process(delta):
 			# otherwise use the wall slide gravity modifier.
 			velocity.y = min(velocity.y, wall_slide_speed_limit)
 
-	if dead:
+	if dead or in_victory_anim:
 		velocity.x = 0
 	else:
 		# Handle Jump.
@@ -83,9 +84,16 @@ func collided_with_jam(jam):
 	got_jam.emit()
 
 
-func collided_with_plate(plate):
+func collided_with_plate(_plate):
 	if jam_points == get_tree().get_first_node_in_group("Level").target_jam_points:
-		completed_level.emit()
+		collision_layer = 0 # Disable collisions
+		animation_tree.get("parameters/playback").travel("victory")
+		in_victory_anim = true
+		print("VICTORY")
+
+
+func victory_anim_done():
+	completed_level.emit()
 
 
 func pickup_gun(new_gun: PackedScene):

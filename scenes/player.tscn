@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://yamxyc1blu1w"]
+[gd_scene load_steps=28 format=3 uid="uid://yamxyc1blu1w"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_ffm6m"]
 [ext_resource type="Texture2D" uid="uid://e8cskehwuib0" path="res://toast_parts/toast/Body.PNG" id="2_21i3r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dsp16fvmkhxt8" path="res://toast_parts/toast/FrontLeg.PNG" id="3_whvu1"]
 [ext_resource type="Texture2D" uid="uid://dd6abg8m17bw5" path="res://toast_parts/toast/BackArm.PNG" id="4_npynr"]
 [ext_resource type="AudioStream" uid="uid://clmt31ab75v3" path="res://sounds/362335__balloonhead__ow.wav" id="7_j3krs"]
+[ext_resource type="AudioStream" uid="uid://dox4t2alsf1xo" path="res://sounds/557125__melisandepope__malevoicewoohoo.wav" id="8_0n0yg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68p7x"]
 radius = 29.0
@@ -177,6 +178,40 @@ tracks/14/loop_wrap = true
 tracks/14/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("VictoryParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Model/Legs/BackHip:position:y")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(220, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Model/Legs/FrontHip:position:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(220, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -433,11 +468,134 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6)
 }
 
+[sub_resource type="Animation" id="Animation_0b1ag"]
+resource_name = "victory"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/UpperBody:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -89.1999, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/UpperBody/FrontShoulder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -2.24107, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Model/UpperBody/BackShoulder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.89043, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VictoryParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Model/Legs/BackHip:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(220, -0.25, 0, 0.25, 0, 110, -0.25, 0, 0.25, 0, 220, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Model/Legs/BackHip:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.571776, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Model/Legs/FrontHip:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(220, -0.25, 0, 0.25, 0, 120, -0.25, 0, 0.25, 0, 220, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Model/Legs/FrontHip:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.547289, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"victory_anim_done"
+}]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AudioStreamPlayer2D")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_0n0yg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/9/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pvac0"]
 _data = {
 "RESET": SubResource("Animation_hhsy0"),
 "death": SubResource("Animation_6su0j"),
 "idle": SubResource("Animation_3dvwd"),
+"victory": SubResource("Animation_0b1ag"),
 "walk": SubResource("Animation_ux12p")
 }
 
@@ -446,6 +604,9 @@ animation = &"death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qk4u0"]
 animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iuhbx"]
+animation = &"victory"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fem5j"]
 animation = &"walk"
@@ -463,15 +624,21 @@ xfade_time = 0.4
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aiqkg"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bi6kt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ijdvj"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_djqyh"]
 states/Start/position = Vector2(196.571, 122.286)
 states/death/node = SubResource("AnimationNodeAnimation_d2b0k")
 states/death/position = Vector2(444, 234.571)
 states/idle/node = SubResource("AnimationNodeAnimation_qk4u0")
 states/idle/position = Vector2(354.857, 121.429)
+states/victory/node = SubResource("AnimationNodeAnimation_iuhbx")
+states/victory/position = Vector2(509.714, 30.5714)
 states/walk/node = SubResource("AnimationNodeAnimation_fem5j")
 states/walk/position = Vector2(586.286, 121.918)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_684bv"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6ng76"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_n8r80"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_n6e8h"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_aiqkg")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_684bv"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6ng76"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_n8r80"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_n6e8h"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_aiqkg"), "idle", "victory", SubResource("AnimationNodeStateMachineTransition_bi6kt"), "walk", "victory", SubResource("AnimationNodeStateMachineTransition_ijdvj")]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hand") groups=["Player"]]
 collision_layer = 3
@@ -486,7 +653,7 @@ scale = Vector2(0.1, 0.1)
 [node name="Legs" type="Node2D" parent="Model"]
 
 [node name="BackHip" type="Node2D" parent="Model/Legs"]
-position = Vector2(-100, 220)
+position = Vector2(-90, 220)
 
 [node name="BackLeg" type="Sprite2D" parent="Model/Legs/BackHip"]
 z_index = 100
@@ -545,3 +712,17 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_j3krs")
+
+[node name="VictoryParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.2
+one_shot = true
+texture = ExtResource("2_21i3r")
+direction = Vector2(2.08165e-12, -1)
+spread = 60.0
+gravity = Vector2(2.08165e-12, 980)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.01
+scale_amount_max = 0.02
