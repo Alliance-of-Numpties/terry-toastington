@@ -16,7 +16,7 @@ script = ExtResource("1_5oi5p")
 spawn_marker = NodePath("../PlayerSpawnMarker")
 
 [node name="PlayerSpawnMarker" type="Node2D" parent="."]
-position = Vector2(960, 540)
+position = Vector2(960, 420)
 
 [node name="Jam Spawner" type="Node2D" parent="."]
 script = ExtResource("3_m6ya1")
@@ -60,6 +60,6 @@ texture_over = ExtResource("7_pgqfj")
 texture_progress = ExtResource("8_td5s2")
 texture_progress_offset = Vector2(2.08165e-12, 2.08165e-12)
 
+[connection signal="spawned_player" from="PlayerSpawner" to="." method="_on_player_spawner_spawned_player"]
 [connection signal="spawned_player" from="PlayerSpawner" to="Jam Spawner" method="_on_player_spawner_spawned_player"]
 [connection signal="spawned_player" from="PlayerSpawner" to="UI" method="_on_player_spawner_spawned_player"]
-[connection signal="spawned_player" from="PlayerSpawner" to="." method="_on_player_spawner_spawned_player"]

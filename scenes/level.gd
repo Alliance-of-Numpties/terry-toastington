@@ -3,6 +3,7 @@ extends Node
 class_name Level
 
 signal level_complete
+signal restart_level
 
 @export var target_jam_points = 3
 
@@ -13,5 +14,5 @@ func _on_player_spawner_spawned_player():
 
 
 func _on_player_death():
-	get_parent().reload_current_scene()
+	restart_level.emit()
 

@@ -41,9 +41,7 @@ class Recording:
 
 @onready var recording: Recording = Recording.new([TimedPoint.new(0.0, player.position, player.model.scale.x)])
 var timer: Timer
-@export var spawn_time: float = 3.0
-
-@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@export var spawn_time: float = 2.0
 
 func _ready():
 	timer = Timer.new()
@@ -58,10 +56,9 @@ func _physics_process(delta):
 		recording.points.append(new_point)
 
 func spawn_child():
-	var child = ghoast_scene.instantiate() as PlayerPathFollow
+	var child = ghoast_scene.instantiate()
 	child.recording = recording
 	add_child(child)
-	audio_stream_player.play()
 
 func _on_timeout():
 	spawn_child()

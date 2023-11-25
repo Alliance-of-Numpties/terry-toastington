@@ -9,6 +9,8 @@ var current_level_node
 @export var home_menu_scene: PackedScene
 @export var game_complete_scene: PackedScene
 
+@onready var animation_player = $AnimationPlayer
+
 
 func _ready():
 	start_level()
@@ -16,10 +18,14 @@ func _ready():
 func start_level():
 	current_level_node = scenes[current_scene_index].instantiate() as Level
 	current_level_node.level_complete.connect(_on_level_complete)
+	current_level_node.restart_level.connect(_on_level_restart)
 	add_child(current_level_node)
 	# Ensure the pause menu remains on top
 	remove_child(pause_menu)
 	add_child(pause_menu)
+	get_tree().paused = true
+	animation_player.play("Start")
+
 
 func reload_current_scene():
 	remove_child(current_level_node)
@@ -51,3 +57,13 @@ func _on_level_complete():
 		on_game_complete()
 	else:
 		reload_current_scene()
+
+func _on_go():
+	get_tree().paused = false
+
+func _on_level_restart():
+	get_tree().paused = true
+	animation_player.play("End")
+
+func _on_end():
+	reload_current_scene()
