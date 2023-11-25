@@ -22,7 +22,8 @@ func spawn_jam():
 	jam_instance.global_position = target_spawn.global_position
 
 
-func _ready():
+func _on_player_spawner_spawned_player():
+	get_player().got_jam.connect(_on_player_got_jam)
 	spawn_jam.call_deferred()
 
 
