@@ -14,6 +14,8 @@ height = 78.0
 script = ExtResource("1_era5s")
 
 [node name="Ghoast" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("2_vpscq")
 
 [node name="Model" type="Node2D" parent="Ghoast"]

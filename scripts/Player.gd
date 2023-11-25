@@ -11,6 +11,8 @@ signal got_jam
 @export var jam_points = 0
 @export var wall_slide_speed_limit = 100
 
+@export var gun: Gun
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -19,6 +21,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var dead = false
 
+func _ready():
+	animation_tree.active = true
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -53,6 +57,15 @@ func _physics_process(delta):
 			animation_tree.get("parameters/playback").travel("idle")
 
 	move_and_slide()
+
+
+func _input(event):
+	if dead:
+		return
+
+	if event.is_action_pressed("shoot"):
+		print("FIRE")
+		gun.fire((get_global_mouse_position() - gun.global_position).normalized())
 
 
 func collided_with_jam(jam):
