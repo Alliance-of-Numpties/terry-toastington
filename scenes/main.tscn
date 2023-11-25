@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://doscg0l784buy"]
+[gd_scene load_steps=3 format=3 uid="uid://doscg0l784buy"]
 
 [ext_resource type="PackedScene" uid="uid://yamxyc1blu1w" path="res://scenes/player.tscn" id="1_srqt0"]
 [ext_resource type="TileSet" uid="uid://s6jr1v8akh6q" path="res://tiles.tres" id="2_wvi7v"]
-[ext_resource type="PackedScene" uid="uid://c2sjl2lumqg5o" path="res://scenes/jam.tscn" id="3_sdxo6"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_srqt0")]
+collision_layer = 3
+collision_mask = 3
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
@@ -21,7 +22,6 @@ drag_horizontal_enabled = true
 [node name="World" type="TileMap" parent="."]
 tile_set = ExtResource("2_wvi7v")
 format = 2
-layer_0/tile_data = PackedInt32Array(524302, 196609, 3, 327682, 65537, 3, 327683, 131073, 3, 327684, 131073, 3, 327685, 131073, 3, 327686, 196609, 3, 524301, 131073, 3, 524300, 131073, 3, 524299, 131073, 3, 524298, 131073, 3, 524297, 131073, 3, 524296, 131073, 3, 524295, 131073, 3, 524294, 131073, 3, 524293, 65537, 3)
+layer_0/tile_data = PackedInt32Array(524302, 196609, 3, 327682, 65537, 3, 327683, 131073, 3, 327684, 131073, 3, 327685, 131073, 3, 327686, 196609, 3, 524301, 131073, 3, 524300, 131073, 3, 524299, 131073, 3, 524298, 131073, 3, 524297, 131073, 3, 524296, 131073, 3, 524295, 131073, 3, 524294, 131073, 3, 524293, 65537, 3, 458761, 0, 65536)
 
-[node name="Jam" parent="." instance=ExtResource("3_sdxo6")]
-position = Vector2(534, 296)
+[connection signal="body_entered" from="World/Item" to="World/Item" method="_on_body_entered" flags=18]

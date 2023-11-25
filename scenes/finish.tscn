@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://0yltpsdcs2dg"]
+
+[ext_resource type="Texture2D" uid="uid://cgcdnlurqo8ge" path="res://Tile.svg" id="1_14lc3"]
+
+[node name="Finish" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_14lc3")
+region_enabled = true
+region_rect = Rect2(259, 5, 30, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
