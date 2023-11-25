@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/PlayerPathFollow.gd" id="1_era5s"]
 [ext_resource type="Script" path="res://scripts/Ghoast.gd" id="2_vpscq"]
-[ext_resource type="Texture2D" uid="uid://cllfvx6l4m6v4" path="res://toast.jpeg" id="3_eh1b6"]
+[ext_resource type="Texture2D" uid="uid://uyrmv6dw0s41" path="res://toast.png" id="3_laq07"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwjf7"]
 radius = 45.0
@@ -17,7 +17,7 @@ script = ExtResource("2_vpscq")
 [node name="Sprite2D" type="Sprite2D" parent="Ghoast"]
 self_modulate = Color(0.584314, 0.584314, 0.584314, 0.596078)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_eh1b6")
+texture = ExtResource("3_laq07")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ghoast"]
 shape = SubResource("CapsuleShape2D_jwjf7")

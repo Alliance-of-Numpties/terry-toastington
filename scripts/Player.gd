@@ -12,6 +12,9 @@ signal death
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var animation_tree = $AnimationTree
+@onready var model = $Model
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -36,8 +39,11 @@ func _physics_process(delta):
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * speed
+		animation_tree.get("parameters/playback").travel("walk")
+		model.scale.x = -sign(direction) * abs(model.scale.x)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+		animation_tree.get("parameters/playback").travel("idle")
 
 	move_and_slide()
 

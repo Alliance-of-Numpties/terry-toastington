@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cllfvx6l4m6v4"
-path="res://.godot/imported/toast.jpeg-c280005bf0512a4a6cb5f9225437e4eb.ctex"
+uid="uid://uyrmv6dw0s41"
+path="res://.godot/imported/toast.png-fda730f53d3ecad40564d786c55724e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://toast.jpeg"
-dest_files=["res://.godot/imported/toast.jpeg-c280005bf0512a4a6cb5f9225437e4eb.ctex"]
+source_file="res://toast.png"
+dest_files=["res://.godot/imported/toast.png-fda730f53d3ecad40564d786c55724e3.ctex"]
 
 [params]
 
