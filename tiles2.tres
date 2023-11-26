@@ -1,17 +1,104 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://cnrlct5odgcr6"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://cnrlct5odgcr6"]
 
 [ext_resource type="PackedScene" uid="uid://c2sjl2lumqg5o" path="res://scenes/jam.tscn" id="1_tnbd3"]
 [ext_resource type="PackedScene" uid="uid://bf0aobie6ooha" path="res://scenes/finish.tscn" id="2_lv53i"]
 [ext_resource type="PackedScene" uid="uid://bs38s85nngg6d" path="res://scenes/jam_spawn_point.tscn" id="3_dmdj5"]
-[ext_resource type="PackedScene" uid="uid://c66ci8gwakmhr" path="res://scenes/gun_pickup.tscn" id="4_ebv65"]
 [ext_resource type="PackedScene" uid="uid://dsnxfaddss38r" path="res://scenes/plate.tscn" id="5_sufl2"]
 [ext_resource type="Texture2D" uid="uid://dff7rpf0wdrc8" path="res://tiles/tile-set.svg" id="6_yscqh"]
+
+[sub_resource type="GDScript" id="GDScript_676gi"]
+script/source = "extends Area2D
+
+@export var gun_scene: PackedScene
+
+func _on_body_entered(body: Player):
+	body.pickup_gun(gun_scene)
+	queue_free()
+"
+
+[sub_resource type="GDScript" id="GDScript_qw04g"]
+script/source = "extends Node2D
+
+class_name Gun
+
+signal empty_clip
+
+@export var bullet_scene: PackedScene
+@export var bullets = 5
+@export var bullet_speed = 1000
+
+func fire(direction: Vector2):
+	if bullets > 0:
+		bullets -= 1
+		var bullet = bullet_scene.instantiate()
+		bullet.global_position = global_position
+		bullet.velocity = direction * bullet_speed
+		get_parent().add_sibling(bullet)
+		if bullets == 0:
+			empty_clip.emit()
+"
+
+[sub_resource type="GDScript" id="GDScript_usa8m"]
+script/source = "extends CharacterBody2D
+
+func on_hit(obj):
+	if \"kill\" in obj:
+		obj.kill()
+	queue_free()
+
+
+func _physics_process(_delta):
+	move_and_slide()"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_10wlp"]
+radius = 13.0384
+
+[sub_resource type="PackedScene" id="PackedScene_t1thb"]
+_bundled = {
+"conn_count": 2,
+"conns": PackedInt32Array(1073741827, 1073741828, 16, 17, 2, 0, 0, 1073741829, 1073741830, 18, 19, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Bullet", "CharacterBody2D", "collision_layer", "collision_mask", "script", "Sprite2D", "Sprite2D", "scale", "texture", "Area2D", "Area2D", "collision_layer", "collision_mask", "CollisionShape2D", "CollisionShape2D", "shape", "area_entered", "on_hit", "body_entered", "on_hit"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath("./Area2D"), NodePath("Area2D"), NodePath("."), NodePath("Area2D"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 3, 2, 0, 3, 1, 4, 2, 0, 1073741824, 0, 6, 5, -1, 2, 7, 3, 8, 4, 0, 1073741825, 0, 10, 9, -1, 2, 11, 5, 12, 6, 0, 1073741826, 0, 14, 13, -1, 1, 15, 7, 0),
+"variants": [0, 5, SubResource("GDScript_usa8m"), Vector2(0.3, 0.3), null, 0, 4, SubResource("CircleShape2D_10wlp")],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_c8jp4"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Gun", "Node2D", "position", "rotation", "scale", "script", "bullet_scene", "Sprite2D", "Sprite2D", "z_index", "scale", "texture"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 5, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 0, 1073741824, 0, 8, 7, -1, 3, 9, 5, 10, 6, 11, 7, 0),
+"variants": [Vector2(3.05176e-05, 0.00012207), 0.0123025, Vector2(10, 10), SubResource("GDScript_qw04g"), SubResource("PackedScene_t1thb"), 105, Vector2(0.05, 0.05), null],
+"version": 3
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2njnp"]
+
+[sub_resource type="PackedScene" id="PackedScene_dwr7x"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741826, 1073741827, 14, 15, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Item", "Area2D", "collision_layer", "collision_mask", "script", "gun_scene", "CollisionShape2D", "CollisionShape2D", "shape", "Sprite2D", "Sprite2D", "modulate", "scale", "texture", "body_entered", "_on_body_entered"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 4, 2, 0, 3, 1, 4, 2, 5, 3, 0, 1073741824, 0, 7, 6, -1, 1, 8, 4, 0, 1073741825, 0, 10, 9, -1, 3, 11, 5, 12, 6, 13, 7, 0),
+"variants": [0, 2, SubResource("GDScript_676gi"), SubResource("PackedScene_c8jp4"), SubResource("RectangleShape2D_2njnp"), Color(0.0431373, 0.4, 1, 1), Vector2(0.5, 0.5), null],
+"version": 3
+}
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tex5w"]
 scenes/1/scene = ExtResource("1_tnbd3")
 scenes/2/scene = ExtResource("2_lv53i")
 scenes/3/scene = ExtResource("3_dmdj5")
-scenes/4/scene = ExtResource("4_ebv65")
+scenes/4/scene = SubResource("PackedScene_dwr7x")
 scenes/5/scene = ExtResource("5_sufl2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8qyp"]

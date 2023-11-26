@@ -1,13 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddvuf5xllswfw"]
 
-[ext_resource type="Texture2D" uid="uid://cnuy6bplblaiq" path="res://jam.png" id="1_kinmf"]
+[ext_resource type="Texture2D" uid="uid://bj8veesyjjfcp" path="res://jam.svg" id="1_dowrs"]
 
 [node name="JamSpawnEffect" type="CPUParticles2D"]
 emitting = false
 amount = 20
 lifetime = 0.2
 one_shot = true
-texture = ExtResource("1_kinmf")
+texture = ExtResource("1_dowrs")
 direction = Vector2(2.08165e-12, -1)
 spread = 60.0
 gravity = Vector2(2.08165e-12, 980)

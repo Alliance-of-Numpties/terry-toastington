@@ -14,7 +14,6 @@ var target_points = 1
 @export var wall_slide_speed_limit = 100
 
 @export var hand: RemoteTransform2D
-@export var gun: Gun = null
 
 @export var jam_splat: Sprite2D
 @export var jam_splat_curve: Curve
@@ -32,12 +31,13 @@ var in_victory_anim = false
 func _ready():
 	animation_tree.active = true
 
+
 func _process(_delta):
 	if not jam_points:
 		jam_splat.visible = false
 	else:
 		jam_splat.visible = true
-		jam_splat.scale = Vector2(1,1) * jam_splat_curve.sample(jam_points / float(target_points))
+		jam_splat.scale = Vector2(1, 1) * jam_splat_curve.sample(jam_points / float(target_points))
 
 
 func _physics_process(delta):
@@ -79,15 +79,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _input(event):
-	if dead:
-		return
-
-	if event.is_action_pressed("shoot") and gun != null:
-		print("FIRE")
-		gun.fire((get_global_mouse_position() - gun.global_position).normalized())
-
-
 func collided_with_jam(jam):
 	jam_points += 1
 	print(str(self) + " jam points: " + str(jam_points))
@@ -98,7 +89,7 @@ func collided_with_jam(jam):
 
 func collided_with_plate(_plate):
 	if jam_points == get_tree().get_first_node_in_group("Level").target_jam_points:
-		collision_layer = 0 # Disable collisions
+		collision_layer = 0  # Disable collisions
 		animation_tree.get("parameters/playback").travel("victory")
 		in_victory_anim = true
 		print("VICTORY")
@@ -106,23 +97,6 @@ func collided_with_plate(_plate):
 
 func victory_anim_done():
 	completed_level.emit()
-
-
-func pickup_gun(new_gun: PackedScene):
-	if gun != null:
-		gun.queue_free()
-	gun = new_gun.instantiate()
-	gun.position = Vector2.ZERO
-	gun.rotation = 0
-	add_child(gun)
-	hand.remote_path = hand.get_path_to(gun)
-	gun.empty_clip.connect(drop_gun)
-
-
-func drop_gun():
-	gun.queue_free()
-	gun = null
-	hand.remote_path = NodePath("")
 
 
 func reached_finish_line():
