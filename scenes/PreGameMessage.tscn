@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwl2tca6t30od"]
+[gd_scene load_steps=11 format=3 uid="uid://cwl2tca6t30od"]
 
 [ext_resource type="Theme" uid="uid://dq20watocg4r0" path="res://uitheme.tres" id="1_i5ets"]
 [ext_resource type="Script" path="res://scenes/home_menu.gd" id="2_24axk"]
@@ -6,6 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://csoik5unhon24" path="res://toast_parts/toast/GhoastTrail.PNG" id="4_8baq7"]
 [ext_resource type="Texture2D" uid="uid://e8cskehwuib0" path="res://toast_parts/toast/Body.PNG" id="5_jgh45"]
 [ext_resource type="Texture2D" uid="uid://pxaipywi6foe" path="res://toast_parts/toast/EyesOpen.PNG" id="6_pf0kx"]
+[ext_resource type="Texture2D" uid="uid://dab88hk2k2wqk" path="res://background.png" id="7_flo5u"]
+
+[sub_resource type="Animation" id="Animation_wqmdh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_757a6"]
 resource_name = "ui_anim"
@@ -21,20 +36,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(-0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, -0.5, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1, 2)
-}
-
-[sub_resource type="Animation" id="Animation_wqmdh"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h5571"]
@@ -173,5 +174,11 @@ Space -
     jump/climb
 
 Hug walls to slide"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(960, 540)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("7_flo5u")
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

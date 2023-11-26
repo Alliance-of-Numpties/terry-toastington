@@ -775,18 +775,15 @@ texture = ExtResource("6_ctjd6")
 
 [node name="EyesOpen" type="Sprite2D" parent="Model/UpperBody"]
 z_index = 100
-scale = Vector2(1, 1)
 texture = ExtResource("7_qcybd")
 
 [node name="EyesDead" type="Sprite2D" parent="Model/UpperBody"]
 visible = false
 z_index = 100
-scale = Vector2(1, 1)
 texture = ExtResource("8_ysd0h")
 
 [node name="Mouth" type="Sprite2D" parent="Model/UpperBody"]
 z_index = 100
-scale = Vector2(1, 1)
 texture = ExtResource("8_4t44b")
 
 [node name="FrontShoulder" type="Node2D" parent="Model/UpperBody"]

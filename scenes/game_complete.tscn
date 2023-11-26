@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://45l8haq63h48"]
+[gd_scene load_steps=5 format=3 uid="uid://45l8haq63h48"]
 
 [ext_resource type="Theme" uid="uid://dq20watocg4r0" path="res://uitheme.tres" id="1_gns7y"]
 [ext_resource type="Script" path="res://scripts/game_complete.gd" id="2_nhqss"]
 [ext_resource type="PackedScene" uid="uid://djqwrq68u16oe" path="res://scenes/home_menu.tscn" id="3_hhcqk"]
+[ext_resource type="Texture2D" uid="uid://dab88hk2k2wqk" path="res://background.png" id="4_w8alb"]
 
 [node name="GameComplete" type="Control"]
 layout_mode = 3
@@ -51,5 +52,11 @@ horizontal_alignment = 1
 [node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Return to main menu"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(960, 540)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("4_w8alb")
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

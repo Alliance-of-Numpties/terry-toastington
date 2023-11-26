@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://doscg0l784buy"]
+[gd_scene load_steps=17 format=3 uid="uid://doscg0l784buy"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_eweg8"]
 [ext_resource type="PackedScene" uid="uid://c6uogb11xh1xj" path="res://scenes/levels/level2.tscn" id="2_111tr"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://45l8haq63h48" path="res://scenes/game_complete.tscn" id="4_n0ksl"]
 [ext_resource type="PackedScene" uid="uid://bskr03k7bgleo" path="res://scenes/pause_menu.tscn" id="5_w54vl"]
 [ext_resource type="Theme" uid="uid://dq20watocg4r0" path="res://uitheme.tres" id="6_i35e2"]
+[ext_resource type="Texture2D" uid="uid://dab88hk2k2wqk" path="res://background.png" id="10_athj4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjwd2"]
 bg_color = Color(0, 0, 0, 1)
@@ -40,6 +41,21 @@ tracks/1/keys = {
 "args": [],
 "method": &"_on_end"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_04pav"]
+resource_name = "JamCollected"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JamComplete/MarginContainer/VBoxContainer/Text:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(2.08165e-12, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2.08165e-12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2)
 }
 
 [sub_resource type="Animation" id="Animation_ehrel"]
@@ -145,21 +161,6 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_04pav"]
-resource_name = "JamCollected"
-length = 2.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("JamComplete/MarginContainer/VBoxContainer/Text:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(2.08165e-12, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2.08165e-12, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1.5, 2)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_becjn"]
 _data = {
 "End": SubResource("Animation_083y5"),
@@ -233,10 +234,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 180
 
 [node name="VBoxContainer" type="VBoxContainer" parent="JamComplete/MarginContainer"]
 layout_mode = 2
@@ -254,6 +255,12 @@ process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_becjn")
 }
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(960, 540)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("10_athj4")
 
 [connection signal="quit" from="PauseMenu" to="." method="exit_to_menu"]
 [connection signal="resume" from="PauseMenu" to="." method="resume_game"]
