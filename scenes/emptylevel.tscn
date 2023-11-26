@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_5oi5p"]
 [ext_resource type="PackedScene" uid="uid://cja7vvilisuoi" path="res://scenes/player_spawner.tscn" id="2_4o7rl"]
-[ext_resource type="PackedScene" path="res://scenes/jam_spawner.tscn" id="3_eisal"]
+[ext_resource type="PackedScene" uid="uid://cncrovwakjogf" path="res://scenes/jam_spawner.tscn" id="3_eisal"]
 [ext_resource type="Script" path="res://scripts/UI.gd" id="5_85ltv"]
 [ext_resource type="TileSet" uid="uid://cnrlct5odgcr6" path="res://tiles2.tres" id="5_ttgt5"]
 [ext_resource type="Texture2D" uid="uid://dmyojgbqeo1sb" path="res://progress-bar/under.svg" id="6_fnd5j"]

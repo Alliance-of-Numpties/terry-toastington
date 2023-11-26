@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2sjl2lumqg5o"]
 
 [ext_resource type="Script" path="res://scenes/jam.gd" id="1_bnpcb"]
-[ext_resource type="Texture2D" uid="uid://cnuy6bplblaiq" path="res://jam.png" id="1_cj6qd"]
+[ext_resource type="Texture2D" uid="uid://bj8veesyjjfcp" path="res://jam.svg" id="2_l87dq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2njnp"]
 
@@ -14,7 +14,8 @@ script = ExtResource("1_bnpcb")
 shape = SubResource("RectangleShape2D_2njnp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_cj6qd")
+position = Vector2(2.08165e-12, -10)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_l87dq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
