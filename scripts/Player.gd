@@ -41,40 +41,40 @@ func _process(_delta):
 
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		if not is_on_wall():
-			var falling = velocity.y > 0
-			var falling_multiplier = 0.8
-			var rising_multiplier = 1.2
-			var gravity_multiplier = falling_multiplier if falling else rising_multiplier
-			velocity.y += gravity * delta * gravity_multiplier
-		else:
-			velocity.y += gravity * delta
-			# Continue jumping with regular gravity if still moving up,
-			# otherwise use the wall slide gravity modifier.
-			velocity.y = min(velocity.y, wall_slide_speed_limit)
+	var input_direction = Input.get_axis("left", "right")
+	var input_jump = Input.is_action_just_pressed("jump")
 
 	if dead or in_victory_anim:
+		# If dead or playing the victory animation, ignore input.
+		input_direction = 0
+		input_jump = false
+		# Stop the horizontal movement.
 		velocity.x = 0
 	else:
-		# Handle Jump.
-		if Input.is_action_just_pressed("jump"):
-			if is_on_floor():
-				velocity.y = jump_velocity
-			elif is_on_wall():
-				velocity.y = jump_velocity
-
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		var direction = Input.get_axis("left", "right")
-		if direction:
-			velocity.x = direction * speed
+		# Handle the side-to-side movement/deceleration and animation.
+		if input_direction:
+			velocity.x = input_direction * speed
 			animation_tree.get("parameters/playback").travel("walk")
-			model.scale.x = -sign(direction) * abs(model.scale.x)
+			model.scale.x = -sign(input_direction) * abs(model.scale.x)
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 			animation_tree.get("parameters/playback").travel("idle")
+
+	# Add the gravity.
+	if not is_on_floor():
+		var falling = velocity.y > 0
+		var falling_multiplier = 0.8
+		var rising_multiplier = 1.2
+		var gravity_multiplier = falling_multiplier if falling else rising_multiplier
+		velocity.y += gravity * delta * gravity_multiplier
+		if is_on_wall() and input_direction != 0:
+			# If on a wall, limit the falling speed
+			velocity.y = min(velocity.y, wall_slide_speed_limit)
+
+	# Handle Jump.
+	if input_jump:
+		if is_on_floor() or is_on_wall():
+			velocity.y = jump_velocity
 
 	move_and_slide()
 
