@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://capfidy20shne"]
+[gd_scene load_steps=9 format=3 uid="uid://capfidy20shne"]
 
 [ext_resource type="Script" path="res://scripts/PlayerPathFollow.gd" id="1_era5s"]
 [ext_resource type="Script" path="res://scripts/Ghoast.gd" id="2_vpscq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csoik5unhon24" path="res://toast_parts/toast/GhoastTrail.PNG" id="4_m3j7g"]
 [ext_resource type="Texture2D" uid="uid://bqi5gpcbwqb7u" path="res://toast_parts/toast/GhoastEffect.PNG" id="5_c582s"]
 [ext_resource type="AudioStream" uid="uid://bigegy2esydt4" path="res://sounds/411639__inspectorj__pop-low-a-h1.wav" id="6_aui57"]
+[ext_resource type="Texture2D" uid="uid://pxaipywi6foe" path="res://toast_parts/toast/EyesOpen.PNG" id="6_l7cpp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwjf7"]
 radius = 28.0
@@ -34,6 +35,10 @@ texture = ExtResource("4_m3j7g")
 [node name="Body" type="Sprite2D" parent="Ghoast/Model"]
 z_index = 90
 texture = ExtResource("3_kpqf8")
+
+[node name="Eyes" type="Sprite2D" parent="Ghoast/Model"]
+z_index = 90
+texture = ExtResource("6_l7cpp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ghoast"]
 shape = SubResource("CapsuleShape2D_jwjf7")

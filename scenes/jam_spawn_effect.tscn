@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddvuf5xllswfw"]
+[gd_scene load_steps=2 format=3 uid="uid://ddvuf5xllswfw"]
 
 [ext_resource type="Texture2D" uid="uid://cnuy6bplblaiq" path="res://jam.png" id="1_kinmf"]
-[ext_resource type="AudioStream" uid="uid://dkml1cx31kckh" path="res://sounds/30479__digifishmusic__cup-hit-with-pen-damped.wav" id="2_eoo5a"]
 
 [node name="JamSpawnEffect" type="CPUParticles2D"]
 emitting = false
@@ -16,7 +15,3 @@ initial_velocity_min = 200.0
 initial_velocity_max = 400.0
 scale_amount_min = 0.1
 scale_amount_max = 0.2
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_eoo5a")
-autoplay = true

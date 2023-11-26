@@ -10,10 +10,14 @@ signal completed_level
 @export var speed = 500.0
 @export var jump_velocity = -1000.0
 @export var jam_points = 0
+var target_points = 1
 @export var wall_slide_speed_limit = 100
 
 @export var hand: RemoteTransform2D
 @export var gun: Gun = null
+
+@export var jam_splat: Sprite2D
+@export var jam_splat_curve: Curve
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -27,6 +31,13 @@ var in_victory_anim = false
 
 func _ready():
 	animation_tree.active = true
+
+func _process(_delta):
+	if not jam_points:
+		jam_splat.visible = false
+	else:
+		jam_splat.visible = true
+		jam_splat.scale = Vector2(1,1) * jam_splat_curve.sample(jam_points / float(target_points))
 
 
 func _physics_process(delta):
@@ -82,6 +93,7 @@ func collided_with_jam(jam):
 	print(str(self) + " jam points: " + str(jam_points))
 	jam.queue_free()
 	got_jam.emit()
+	$JamPickupSound.play()
 
 
 func collided_with_plate(_plate):

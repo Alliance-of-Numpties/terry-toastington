@@ -13,6 +13,7 @@ func _on_player_spawner_spawned_player():
 	player.death_end.connect(_on_player_death)
 	player.completed_level.connect(func(): level_complete.emit())
 	player.got_jam.connect(_on_player_pickup_jam)
+	player.target_points = target_jam_points
 
 
 func _on_player_death():
