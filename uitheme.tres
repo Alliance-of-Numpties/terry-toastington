@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dq20watocg4r0"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dq20watocg4r0"]
 
 [ext_resource type="FontFile" uid="uid://cnhin3xdy7qpx" path="res://sunny-spells-font/SunnyspellsRegular-MV9ze.otf" id="1_8ds7c"]
 
@@ -68,6 +68,11 @@ shadow_color = Color(0.164706, 0.164706, 0.164706, 0.6)
 shadow_size = 30
 shadow_offset = Vector2(15, 15)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kl16j"]
+color = Color(0.164706, 0.156863, 0.160784, 1)
+thickness = 5
+vertical = true
+
 [resource]
 default_font = ExtResource("1_8ds7c")
 default_font_size = 80
@@ -77,3 +82,4 @@ Button/styles/normal = SubResource("StyleBoxFlat_u74jy")
 Button/styles/pressed = SubResource("StyleBoxFlat_mb8wj")
 HeaderLarge/font_sizes/font_size = 180
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_t4eh2")
+VSeparator/styles/separator = SubResource("StyleBoxLine_kl16j")
