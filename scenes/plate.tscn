@@ -1,14 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsnxfaddss38r"]
+[gd_scene load_steps=11 format=3 uid="uid://dsnxfaddss38r"]
 
 [ext_resource type="Texture2D" uid="uid://dco433lej8vxi" path="res://plate.svg" id="1_irtfu"]
 [ext_resource type="Script" path="res://scenes/plate.gd" id="1_svaqn"]
 [ext_resource type="Texture2D" uid="uid://cyf7bjk0luqc2" path="res://toast_parts/toast/Mouth.PNG" id="2_xdxbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svxro"]
-size = Vector2(200, 20)
+size = Vector2(140, 20)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_j3rfc"]
+a = Vector2(-69, -9)
+b = Vector2(-108, 9)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5xlop"]
+a = Vector2(69, -9)
+b = Vector2(109, 9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7h7fs"]
-radius = 100.0
+radius = 70.1142
 
 [sub_resource type="Animation" id="Animation_olbq2"]
 length = 0.001
@@ -56,9 +64,16 @@ position = Vector2(-2.08165e-12, 0)
 texture = ExtResource("1_irtfu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 10)
+position = Vector2(-2.08165e-12, 10)
 shape = SubResource("RectangleShape2D_svxro")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-2.08165e-12, 10)
+shape = SubResource("SegmentShape2D_j3rfc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-2.08165e-12, 10)
+shape = SubResource("SegmentShape2D_5xlop")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-2.08165e-12, -9)
@@ -78,7 +93,6 @@ scale_amount_max = 0.2
 color = Color(0.5, 8.24, 5, 0.28)
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 position = Vector2(-2.08165e-12, -11)
 collision_layer = 0
 collision_mask = 2
