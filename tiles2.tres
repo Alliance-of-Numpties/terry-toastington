@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bf0aobie6ooha" path="res://scenes/finish.tscn" id="2_lv53i"]
 [ext_resource type="PackedScene" uid="uid://bs38s85nngg6d" path="res://scenes/jam_spawn_point.tscn" id="3_dmdj5"]
 [ext_resource type="PackedScene" uid="uid://c66ci8gwakmhr" path="res://scenes/gun_pickup.tscn" id="4_ebv65"]
-[ext_resource type="PackedScene" path="res://scenes/plate.tscn" id="5_sufl2"]
+[ext_resource type="PackedScene" uid="uid://dsnxfaddss38r" path="res://scenes/plate.tscn" id="5_sufl2"]
 [ext_resource type="Texture2D" uid="uid://dff7rpf0wdrc8" path="res://tiles/tile-set.svg" id="6_yscqh"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tex5w"]

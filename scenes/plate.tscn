@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://dsnxfaddss38r"]
 
-[ext_resource type="Texture2D" uid="uid://bkpq1hiwduu8t" path="res://plate.svg" id="1_irtfu"]
+[ext_resource type="Texture2D" uid="uid://dco433lej8vxi" path="res://plate.svg" id="1_irtfu"]
 [ext_resource type="Script" path="res://scenes/plate.gd" id="1_svaqn"]
 [ext_resource type="Texture2D" uid="uid://cyf7bjk0luqc2" path="res://toast_parts/toast/Mouth.PNG" id="2_xdxbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svxro"]
-size = Vector2(240, 40)
+size = Vector2(200, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7h7fs"]
-radius = 80.0
+radius = 100.0
 
 [sub_resource type="Animation" id="Animation_olbq2"]
 length = 0.001
@@ -51,36 +51,41 @@ _data = {
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_svaqn")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, -37)
-emitting = false
-amount = 20
-lifetime = 0.6
-texture = ExtResource("2_xdxbn")
-direction = Vector2(2.08165e-12, -1)
-gravity = Vector2(2.08165e-12, 490)
-initial_velocity_min = 200.0
-initial_velocity_max = 400.0
-angle_max = 360.0
-scale_amount_min = 0.05
-scale_amount_max = 0.2
-color = Color(5, 5, 0.5, 0.58)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.08165e-12, -30)
+position = Vector2(-2.08165e-12, 0)
 texture = ExtResource("1_irtfu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.08165e-12, 0)
+visible = false
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_svxro")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-2.08165e-12, -9)
+emitting = false
+amount = 12
+lifetime = 0.6
+texture = ExtResource("2_xdxbn")
+emission_shape = 3
+emission_rect_extents = Vector2(40, 5)
+direction = Vector2(2.08165e-12, -1)
+gravity = Vector2(2.08165e-12, 490)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angle_max = 360.0
+scale_amount_min = 0.05
+scale_amount_max = 0.2
+color = Color(0.5, 8.24, 5, 0.28)
+
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(-2.08165e-12, -11)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.08165e-12, -30)
-scale = Vector2(1, 0.5)
+position = Vector2(0, 11)
+scale = Vector2(1, 0.25)
 shape = SubResource("CircleShape2D_7h7fs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
